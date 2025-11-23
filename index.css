@@ -1,0 +1,48 @@
+body {
+    background-color: black;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 3vh;
+} 
+
+.board {
+    width: 1000px;
+    height: 550px;
+    border: 10px solid white;
+    position: relative;
+}
+
+.player {
+    background-color: white;
+    height: 100px;
+    width: 20px;
+    border: 5px solid black;
+    position: absolute;
+    top: 200px;
+
+    /* /* grid-row: 2; /* which row the item appears in 
+    grid-column: 3; /* which column the item appears in */
+
+    /* grid-area: 10/ 20 / 12 / 21; shortend version of above */
+    /* grid-area: (row) / (column)
+    border: 7px solid transparent; */
+}
+
+.user {
+    left: 0;
+}
+
+.comp {
+    right: 0;
+}
+
+.ball {
+    background: white;
+    height: 20px;
+    width: 20px;
+    position: absolute;
+
+    top: 50px;
+    right: 50px;
+}

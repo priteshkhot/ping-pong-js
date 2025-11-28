@@ -6,8 +6,8 @@ const board = document.querySelector(".board");    // game board
 const ball = document.querySelector(".ball");     // ball
 
 // control buttons on screen
-const upBtn = document.querySelector(".moveup");
-const downBtn = document.querySelector(".movedown");
+// const upBtn = document.querySelector(".moveup");
+// const downBtn = document.querySelector(".movedown");
 
 let userPadY = 200;          // starting Y
 const speed = 7;           // movement per key press
@@ -19,11 +19,30 @@ const maxY = boardHeight - paddleHeight - 10;
 // for comp, syncing the ball with center of the comp paddle
 const ballcompSync = (comp.clientHeight - ball.clientHeight)/2;
 
+// making player paddle draggable
+let isDragging = false;
+
+user.addEventListener("pointerdown", (e) => {
+  isDragging = true;
+  offsetY = e.clientY - user.offsetTop;
+});
+
+document.addEventListener("pointerup", () =>{
+  isDragging =false;
+})
+
+document.addEventListener("pointermove", (e) =>{
+  if (isDragging) {
+    let dragPosition = e.clientY - offsetY;
+    userPadY = dragPosition;
+  }
+});
+
 // starting position for ball
 let ballX = 300;
 let ballY = 200;
 
-let ballSpeed = 2;
+let ballSpeed = 4;
 let ballSpeedX = ballSpeed;   // horizontal movement
 let ballSpeedY = ballSpeed;   // vertical movement
 
@@ -33,6 +52,7 @@ let keys = {
   down: false
 };
 
+// For keyboard Keys
 document.addEventListener("keydown", (e) => {
   if (e.key === "w" || e.key === "ArrowUp") keys.up = true;
   if (e.key === "s" || e.key === "ArrowDown") keys.down = true;
@@ -43,25 +63,26 @@ document.addEventListener("keyup", (e) => {
   if (e.key === "s" || e.key === "ArrowDown") keys.down = false;
 });
 
-upBtn.addEventListener('pointerdown', (e) => {
-  keys.up = true;
-  console.log("button pressed");
-});
+// For UI buttons
+// upBtn.addEventListener('pointerdown', (e) => {
+//   keys.up = true;
+//   console.log("button pressed");
+// });
 
-upBtn.addEventListener('pointerup', (e) => {
-  keys.up = false;
-  console.log("button lifted");
-});
+// upBtn.addEventListener('pointerup', (e) => {
+//   keys.up = false;
+//   console.log("button lifted");
+// });
 
-downBtn.addEventListener('pointerdown', (e) => {
-  keys.down = true;
-  console.log("button pressed");
-});
+// downBtn.addEventListener('pointerdown', (e) => {
+//   keys.down = true;
+//   console.log("button pressed");
+// });
 
-downBtn.addEventListener('pointerup', (e) => {
-  keys.down = false;
-  console.log("button lifted");
-});
+// downBtn.addEventListener('pointerup', (e) => {
+//   keys.down = false;
+//   console.log("button lifted");
+// });
 
 // move player
 function updatePaddle() {
@@ -105,7 +126,7 @@ function checkCompCollision() {
     ballRect.top > paddleRect.bottom
   );
 }
-
+  
 function gameLoop() {
   // move ball
   ballX += ballSpeedX;

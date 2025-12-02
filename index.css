@@ -23,33 +23,29 @@ body {
     height: 100px;
     width: 20px;
     border: 5px solid black;
+    border-radius: 20px;
     position: absolute;
     top: 200px;
-
-    /* /* grid-row: 2; /* which row the item appears in 
-    grid-column: 3; /* which column the item appears in */
-
-    /* grid-area: 10/ 20 / 12 / 21; shortend version of above */
-    /* grid-area: (row) / (column)
-    border: 7px solid transparent; */
+    z-index: 1;
 }
 
 .user {
     left: 0;
-    border-right: 0;
 }
 
 .comp {
     right: 0;
-    border-left: 0;
 }
 
 .ball {
     background: white;
-    height: 20px;
-    width: 20px;
+    height: 27px;
+    width: 27px;
+    border-radius: 50px;
     position: absolute;
 
     top: 200px;
     left: 300px;
+    position: absolute;
+    z-index: 3;
 }

@@ -107,7 +107,7 @@ function checkUserCollision() {
   // simple AABB collision
   return !(
     ballRect.right < paddleRect.left ||
-    ballRect.left > paddleRect.right ||
+    ballRect.left > (paddleRect.right - 5) ||
     ballRect.bottom < paddleRect.top ||
     ballRect.top > paddleRect.bottom
   );
@@ -120,7 +120,7 @@ function checkCompCollision() {
 
   // simple AABB collision
   return !(
-    ballRect.right < paddleRect.left ||
+    ballRect.right < (paddleRect.left + 5) ||
     ballRect.left > paddleRect.right ||
     ballRect.bottom < paddleRect.top ||
     ballRect.top > paddleRect.bottom
@@ -154,8 +154,9 @@ function gameLoop() {
   }
 
   // collision with paddle
-  if (checkUserCollision() || checkCompCollision()) {
+  if ((checkUserCollision() && ballSpeedX < 0) || (checkCompCollision() && ballSpeedX > 0)) {
     ballSpeedX *= -1; // bounce horizontally
+    // play sound
   }
 
   // collision with left/right walls (testing)

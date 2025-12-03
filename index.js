@@ -4,7 +4,6 @@ const comp = document.querySelector("#comp");
 
 const board = document.querySelector(".board");    // game board 
 const ball = document.querySelector(".ball");     // ball
-
 // control buttons on screen
 // const upBtn = document.querySelector(".moveup");
 // const downBtn = document.querySelector(".movedown");
@@ -126,8 +125,26 @@ function checkCompCollision() {
     ballRect.top > paddleRect.bottom
   );
 }
+
+const scoreBoard = document.querySelector(".score");
+let userScore = 0;
+let compScore = 0;
+
+const startBtn = document.querySelector(".start");
+let gameState = false;
+
+startBtn.addEventListener("pointerdown", () => {
+  if (gameState == true) {
+    gameState = false
+    startBtn.innerHTML = "Resume"
+  } else {
+    gameState = true
+    startBtn.innerHTML = "Pause"
+  }
+});
   
 function gameLoop() {
+    if (gameState == true) {
   // move ball
   ballX += ballSpeedX;
   ballY += ballSpeedY;
@@ -160,13 +177,21 @@ function gameLoop() {
   }
 
   // collision with left/right walls (testing)
-  if (ballX <= 0 || ballX >= board.clientWidth - ball.clientWidth) {
+  if (ballX <= 0) {
+    ballSpeedX *= -1;
+    compScore += 1;
+  } else if (ballX >= board.clientWidth - ball.clientWidth) {
+    userScore += 1;
     ballSpeedX *= -1;
   }
 
+  scoreBoard.innerHTML = `${userScore} - ${compScore}`
   updatePaddle();
   requestAnimationFrame(gameLoop);
+} else {
+  requestAnimationFrame(gameLoop);
+}
 }
 
 gameLoop();
-
+game()

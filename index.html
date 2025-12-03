@@ -7,25 +7,40 @@
 <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <!-- <div class="controlbuttons">
-        <button class="moveup">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-up-icon lucide-move-up"><path d="M8 6L12 2L16 6"/><path d="M12 2V22"/></svg>
-        </button>
-        <button class="movedown">
-            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-down-icon lucide-move-down"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
-        </button>
-    </div> -->
-    <div class="board">
-        <div class="player user" id="user">
-
+    <div class="header navbar" id="header">
+        <!-- <div class="controlbuttons">
+            <button class="moveup">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-up-icon lucide-move-up"><path d="M8 6L12 2L16 6"/><path d="M12 2V22"/></svg>
+            </button>
+            <button class="movedown">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-move-down-icon lucide-move-down"><path d="M8 18L12 22L16 18"/><path d="M12 2V22"/></svg>
+            </button>
+        </div> -->
+        <div class="titlediv">
+            Pong
         </div>
-        <div class="ball" id="ball">
-            
+        <div class="score" id="score">
+            0 - 0
         </div>
-        <div class="player comp" id="comp">
-
+        <div>
+            <button class="start pause">Start game</button>
+            <button onclick="location.reload()">Restart</button>
         </div>
     </div>
+    <div class="maingame">
+        <div class="board">
+            <div class="player user" id="user">
+
+            </div>
+            <div class="ball" id="ball">
+       
+            </div>
+            <div class="player comp" id="comp">
+
+            </div>
+        </div>
+    </div>
+
     <!-- <script src="test.js"></script> -->
     <script src="index.js"></script>
 </body>

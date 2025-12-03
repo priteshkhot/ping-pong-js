@@ -1,10 +1,28 @@
 body {
     background-color: black;
     height: 100%;
+} 
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.titlediv {
+    font-size: x-large;
+    font-family: 'Courier New', Courier, monospace;
+    color: white;
+}
+
+.maingame {
     display: flex;
     justify-content: center;
     margin: 3vh;
-} 
+}
+
+.score {
+    color: white;
+}
 
 .controlbuttons {
     display: flex;
@@ -13,7 +31,7 @@ body {
 
 .board {
     width: 1000px;
-    height: 88vh;
+    height: 85vh;
     border: 10px solid white;
     position: relative;
 }
@@ -26,6 +44,13 @@ body {
     border-radius: 20px;
     position: absolute;
     top: 200px;
+
+    /* /* grid-row: 2; /* which row the item appears in 
+    grid-column: 3; /* which column the item appears in */
+
+    /* grid-area: 10/ 20 / 12 / 21; shortend version of above */
+    /* grid-area: (row) / (column)
+    border: 7px solid transparent; */
     z-index: 1;
 }
 
